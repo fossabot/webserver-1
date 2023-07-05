@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dictionary>
+  <!--<core source="$MMSS_HOME/bin">
+    <inprocess id="IPINT30_IP_MMSS_Device" source="DeviceIpint_3" host-type="Discovery" net="no">
+      <name xml:lang="ru">Обнаружение устройств ipint</name>
+      <name xml:lang="en">Ipint devices discovery</name>
+      <args>timeout=30,interval=300</args>
+    </inprocess>
+  </core>-->
+  <package id="InfraDeviceIpint" thumbnail="INFRA.ico" source="$MMSS_HOME/bin">
+    <name xml:lang="ru">Инфраструктурная служба IPINT</name>
+    <name xml:lang="en">Infrastructure IPINT service</name>
+    <inprocess id="IPINT30_IP_MMSS_Device" source="DeviceIpint_3" host-type="dll" net="no" thumbnail="INFRA.ico">
+      <name xml:lang="ru">Обнаружение устройств ipint</name>
+      <name xml:lang="en">Ipint devices discovery</name>
+    </inprocess>
+  </package>
+  <package id="MMSS" thumbnail="MMSS.ico" source="$MMSS_HOME/bin">
+    <name xml:lang="ru">Мультимедиа</name>
+    <name xml:lang="en">Multimedia</name>
+    <inprocess id="DeviceIpint" source="DeviceIpint_3" host-type="dll" net="no"
+               thumbnail="MMSS.DeviceIpint.ico">
+      <name xml:lang="ru">IP устройство</name>
+      <name xml:lang="en">IP device</name>
+    </inprocess>
+  </package>
+  <offer_type id="IPINT30_IP_MMSS_Device" category="device">
+    <interface>IDL:ovsoft.ru/Discovery/Device:1.0</interface>
+    <inherit>IP_MMSS_Device</inherit>
+    <property name="wan_address" type="string" mandatory="false"/>
+  </offer_type>
+</dictionary>

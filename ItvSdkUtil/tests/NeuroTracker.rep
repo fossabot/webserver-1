@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:at="http://www.axxonsoft.com/3.0.0/types" xmlns="http://www.axxonsoft.com/3.0.0/types" xsi:schemaLocation="http://www.axxonsoft.com/3.0.0/types DeviceInfo.xsd" type="at:ipint30" version="3" minor="0">
+  <driver name="NeuroTracker" version="2.0.0">
+    <detector id="NeuroTracker" name="NeuroTracker">
+      <property id="detectorsGroup" xsi:type="PropertyStringType" value="Tracker,AIDetector"/>
+      <property id="RunInSeparateProcess" name="Run detector in separate process" value="1" xsi:type="PropertyIntType"/>
+      <property id="defaultPeriod" value="160" xsi:type="PropertyIntType"/>
+      <property id="frameRate" name="FrameRate" obsolete="true" xsi:type="PropertyIntRangeType">
+        <value>
+          <min>2</min>
+          <max>100</max>
+          <default>6</default>
+        </value>
+      </property>
+      <property id="threshold" name="Threshold" xsi:type="PropertyDoubleRangeType">
+        <value>
+          <min>0.05</min>
+          <max>100</max>
+          <default>30</default>
+        </value>
+      </property>
+      <visualElement id="regionOfInterest">
+        <property id="areaType" xsi:type="PropertyStringType" value="areaOfInterest"/>
+        <polylines type="polygon"/>
+      </visualElement>
+      <property id="CameraPosition" name="CameraPosition" xsi:type="PropertyStringEnumType">
+        <value default="true">Wall</value>
+        <value>Ceiling</value>
+      </property>
+      <property id="mode" name="Mode" xsi:type="PropertyStringEnumType">
+        <value name="CPU" default="true">CPU</value>
+        <value name="GPU0">GPU0</value>
+        <value name="GPU1">GPU1</value>
+        <value name="GPU2">GPU2</value>
+        <value name="GPU3">GPU3</value>
+        <value name="IntelNCS">Movidius</value>
+        <value name="IntelHDDL">HDDL</value>
+        <value name="IntelGPU">IntelGPU</value>
+        <value name="HuaweiNPU">HuaweiNPU</value>
+      </property>
+      <property id="ANNModelFile" xsi:type="PropertyFilePathType"/>
+      <property id="filterMode" name="FilterMode" xsi:type="PropertyStringEnumType">
+        <value name="CPU" default="true">CPU</value>
+        <value name="GPU0">GPU0</value>
+        <value name="GPU1">GPU1</value>
+        <value name="GPU2">GPU2</value>
+        <value name="GPU3">GPU3</value>
+        <value name="IntelNCS">Movidius</value>
+        <value name="IntelHDDL">HDDL</value>
+        <value name="IntelGPU">IntelGPU</value>
+        <value name="HuaweiNPU">HuaweiNPU</value>
+      </property>
+      <property id="filterEnable" default="false" xsi:type="PropertyBoolType"/>
+      <property id="filterANNModelFile" xsi:type="PropertyFilePathType"/>
+      <property id="trackRetentionTime" name="trackRetentionTime (Advanced)" xsi:type="PropertyDoubleRangeType">
+        <value>
+          <min>0.3</min>
+          <max>1000</max>
+          <default>0.7</default>
+        </value>
+      </property>
+      <property id="numOfFramesToAppear" xsi:type="PropertyIntRangeType">
+        <value>
+          <min>2</min>
+          <max>100</max>
+          <default>6</default>
+        </value>
+      </property>
+      <property id="hideStillObjects" name="hideStillObjects (Advanced)" default="false" xsi:type="PropertyBoolType"/>
+      <property id="trackLongStillObjectsOnly" name = "trackLongStillObjectsOnly (Advanced)" default="false" xsi:type="PropertyBoolType"/>
+      <input>Video</input>
+      <event id="TargetList" name="TargetInfo" xsi:type="DetectorPeriodicalEventType"/>
+    </detector>
+    <detectorModule>
+      <detectorRef id="NeuroTracker" maxCount="1"/>
+    </detectorModule>
+  </driver>
+</repository>
